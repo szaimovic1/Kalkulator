@@ -95,5 +95,7 @@ public class Controller {
             resultText.setValue(invalidExpression.getMessage());
         }
         expressionStart = true;
+
+        //BUG - UNARNI MINUS I LEADING ZEROS
     }
 }
