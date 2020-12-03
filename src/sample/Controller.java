@@ -38,8 +38,11 @@ public class Controller {
 
         if (expressionStart && operator.equals("-")){ //unarni minus moze samo na pocetku
             expression.setValue(expression.get() + resultText.get()); //samo dodamo minus na pocetak
-        }else if(expressionStart){
-            return; //na pocetku operatori nista ne znace
+        }else if(expressionStart && resultText.get().isBlank()){
+            return; //na pocetku operatori nista ne znace, ali ako ima neki ans on se uzima u obzir
+        }else if(expressionStart && !resultText.get().isEmpty()){
+            expression.setValue("");
+            expressionStart = false;
         }
 
         if (operatorClicked){
@@ -85,17 +88,12 @@ public class Controller {
 
     private void evaluateExpression(){
         System.out.println(expression.get());
-
-        Double result = null;
         try {
-            result = ExpressionEvaluator.evaluate(expression.get());
+            Double result = ExpressionEvaluator.evaluate(expression.get());
             resultText.setValue(String.valueOf(result));
         } catch (InvalidExpression invalidExpression) {
             resultText.setValue(invalidExpression.getMessage());
         }
         expressionStart = true;
-
-        //rezultat pa nad njim nesto
-        //tipkce mnemonici
     }
 }

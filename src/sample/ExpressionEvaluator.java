@@ -45,7 +45,7 @@ public class ExpressionEvaluator {
 
     private static int precedence(String operator){
         return switch (operator) {
-            case "*", "/", "%" -> 2;
+            case "x", "/", "%" -> 2;
             case "+", "-" -> 1;
             default -> 0;
         };
@@ -59,7 +59,7 @@ public class ExpressionEvaluator {
         return switch (operator) {
             case "+" -> a + b;
             case "-" -> a - b;
-            case "*" -> a * b;
+            case "x" -> a * b;
             case "/" -> a / b;
             case "%" -> a % b;
             default -> throw new IllegalStateException("Unexpected value: " + operator);
@@ -69,7 +69,7 @@ public class ExpressionEvaluator {
     private static boolean isOperator(String operator){
         return operator.equals("+") ||
                 operator.equals("-") ||
-                operator.equals("*") ||
+                operator.equals("x") ||
                 operator.equals("/") ||
                 operator.equals("%");
     }
