@@ -86,12 +86,15 @@ public class Controller {
     private void evaluateExpression(){
         System.out.println(expression.get());
 
-        Double result = ExpressionEvaluator.evaluate(expression.get());
-        resultText.setValue(String.valueOf(result));
-
+        Double result = null;
+        try {
+            result = ExpressionEvaluator.evaluate(expression.get());
+            resultText.setValue(String.valueOf(result));
+        } catch (InvalidExpression invalidExpression) {
+            resultText.setValue(invalidExpression.getMessage());
+        }
         expressionStart = true;
 
-        //dijeljenje sa nulom
         //rezultat pa nad njim nesto
         //tipkce mnemonici
     }

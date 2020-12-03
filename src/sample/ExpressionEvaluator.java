@@ -8,18 +8,15 @@ public class ExpressionEvaluator {
     private ExpressionEvaluator(){
     }
 
-    public static Double evaluate(String infixExpression) {
+    public static Double evaluate(String infixExpression) throws InvalidExpression {
         Stack<Double> operands = new Stack<>();
         Stack<String> operators = new Stack<>();
 
         populateStacks(infixExpression, operands, operators);
-
-
-
         return reduceToResult(operands, operators);
     }
 
-    private static void populateStacks(String infixExpression, Stack<Double> operands, Stack<String> operators){
+    private static void populateStacks(String infixExpression, Stack<Double> operands, Stack<String> operators) throws InvalidExpression {
         String[] tokens = infixExpression.split(" ");
 
         for (String token : tokens){
@@ -36,7 +33,7 @@ public class ExpressionEvaluator {
         }
     }
 
-    private static Double reduceToResult(Stack<Double> operands, Stack<String> operators) {
+    private static Double reduceToResult(Stack<Double> operands, Stack<String> operators) throws InvalidExpression {
         while (!operators.isEmpty()){
             Double b = operands.pop();
             Double a = operands.pop();
@@ -54,7 +51,11 @@ public class ExpressionEvaluator {
         };
     }
 
-    private static Double applyOperator(Double a, Double b, String operator){
+    private static Double applyOperator(Double a, Double b, String operator) throws InvalidExpression {
+        if(b == 0 && operator.equals("/")){
+            throw new InvalidExpression("Division by zero");
+        }
+
         return switch (operator) {
             case "+" -> a + b;
             case "-" -> a - b;
