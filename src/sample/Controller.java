@@ -36,20 +36,21 @@ public class Controller {
     public void operatorClicked(ActionEvent actionEvent){
         String operator = getButtonText(actionEvent);
 
-        if (expressionStart && operator.equals("-")){ //unarni minus moze samo na pocetku
-            expression.setValue(expression.get() + resultText.get()); //samo dodamo minus na pocetak
+        if (expressionStart && operator.equals("-")){
+            //unarni minus
+            expression.setValue(expression.get() + resultText.get());
         }else if(expressionStart && resultText.get().isBlank()){
-            return; //na pocetku operatori nista ne znace, ali ako ima neki ans on se uzima u obzir
+            return;
         }else if(expressionStart && !resultText.get().isEmpty()){
             expression.setValue("");
             expressionStart = false;
         }
 
         if (operatorClicked){
-            //kad se klikne minus pa plus (time se ponisti prosli operator)
+            //minus pa plus
             expression.setValue(expression.get() + expression.get().substring(0, expression.get().length() - 2));
         }else{
-            expression.setValue(expression.get() + resultText.get() + " "); //operand is finished
+            expression.setValue(expression.get() + resultText.get() + " ");
         }
 
         if (operator.equals("=")){
@@ -95,7 +96,5 @@ public class Controller {
             resultText.setValue(invalidExpression.getMessage());
         }
         expressionStart = true;
-
-        //BUG - UNARNI MINUS I LEADING ZEROS
     }
 }

@@ -1,9 +1,7 @@
 .buttonStyle {
-    -fx-background-radius: 8px;
-    -fx-font: bold italic 15px "Arial";
-    -fx-effect: dropshadow( one-pass-box , #808080 , 8 , 0.0 , 2 , 0 );
-    -fx-min-width: 50px;
-    -fx-fit-to-height: 30px;
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+    -fx-border-height: 2px;
 }
 
 #display {
@@ -17,9 +15,9 @@
     -fx-padding: 5px, 10px, 5px, 10px;
 }
 
-#equalsBtn {
-    -fx-background-color: #ffb3b3;
-    -fx-border-color: #ff9999;
+.equalsBtn {
+    -fx-background-color: #80ffcc;
     -fx-border-width: 2px;
+    -fx-effect: dropshadow( one-pass-box , #00995c , 8 , 0.0 , 2 , 0 );
     -fx-border-radius: 8px;
 }

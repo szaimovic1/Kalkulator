@@ -66,6 +66,6 @@
             maxWidth="Infinity" maxHeight="Infinity" onAction="#operandClicked"/>
     <Button text="." GridPane.columnIndex="2" GridPane.rowIndex="6" styleClass="buttonStyle" maxWidth="Infinity"
             maxHeight="Infinity" onAction="#operandClicked"/>
-    <Button text="=" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.rowSpan="2" styleClass="buttonStyle"
+    <Button text="=" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.rowSpan="2" styleClass="equalsBtn"
             maxWidth="Infinity" maxHeight="Infinity" onAction="#operatorClicked"/>
 </GridPane>
